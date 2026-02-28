@@ -1041,21 +1041,42 @@ return asset('storage/' . $photo->file_path);
             const imageUrls = JSON.parse('{!! json_encode($imageUrls) !!}') || [];
 
             // 3. Rakit gambar menjadi GIF menggunakan Gifshot
+            // ... (Langkah 1 sampai 3 biarkan sama)
             gifshot.createGIF({
                 images: imageUrls,
-                interval: 0.5, // Waktu pergantian per frame (0.5 detik)
-                gifWidth: 600, // Resolusi lebar GIF
-                gifHeight: 800 // Resolusi tinggi GIF (Rasio 3:4)
+                interval: 0.5,
+                gifWidth: 600,
+                gifHeight: 800
             }, function(obj) {
                 if (!obj.error) {
-                    // 4. Jika berhasil, download file otomatis
-                    const imageBase64 = obj.image;
+                    // 4. PERBAIKAN: Ubah Base64 menjadi file Blob fisik
+                    const base64Data = obj.image.split(',')[1];
+                    const byteCharacters = atob(base64Data);
+                    const byteNumbers = new Array(byteCharacters.length);
+                    for (let i = 0; i < byteCharacters.length; i++) {
+                        byteNumbers[i] = byteCharacters.charCodeAt(i);
+                    }
+                    const byteArray = new Uint8Array(byteNumbers);
+                    const blob = new Blob([byteArray], {
+                        type: 'image/gif'
+                    });
+
+                    // 5. Buat Object URL dari Blob dan trigger download
+                    const blobUrl = URL.createObjectURL(blob);
                     const a = document.createElement('a');
-                    a.href = imageBase64;
+                    a.style.display = 'none';
+                    a.href = blobUrl;
                     a.download = 'Atmoz_Moment_{{ $transaction->code }}.gif';
+
                     document.body.appendChild(a);
                     a.click();
-                    document.body.removeChild(a);
+
+                    // Bersihkan memori
+                    setTimeout(() => {
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(blobUrl);
+                    }, 100);
+
                 } else {
                     alert('Oops! Gagal merakit GIF. Pastikan gambar tersedia.');
                 }
