@@ -9,7 +9,7 @@
 <input type="hidden" id="template-id-hidden">
 
 <div id="main-wrapper" style="
-    --bg-image: url('{{ asset('storage/images/template page.png') }}');
+    --bg-image: url('{{ asset('public_storage/images/template page.png') }}');
     position: fixed;
     top: 0; left: 0;
     width: 100vw;

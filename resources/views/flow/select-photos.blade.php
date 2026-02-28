@@ -500,7 +500,7 @@
             clearInterval(timerInterval);
             const finalIds = selectedSlots.filter(id => id !== null);
             const nextBg = new Image();
-            nextBg.src = "{{ asset('storage/images/pagess.png') }}";
+            nextBg.src = "{{ asset('public_storage/images/pagess.png') }}";
 
             // 2. Preload Foto Gabungan (Compose)
             // Panggil saat user menekan tombol 'Confirm'

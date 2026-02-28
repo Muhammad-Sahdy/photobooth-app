@@ -128,7 +128,7 @@
     .bg-image {
         position: absolute;
         inset: 0;
-        background: url("{{ asset('storage/images/pagess.png') }}") center center / 100% 100% no-repeat;
+        background: url("{{ asset('public_storage/images/pagess.png') }}") center center / 100% 100% no-repeat;
         z-index: 0;
     }
 

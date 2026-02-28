@@ -22,7 +22,7 @@
     #mainLayout {
         width: 100vw;
         height: 100vh;
-        background-image:url("{{ asset('storage/images/foto.png') }}");
+        background-image:url("{{ asset('public_storage/images/foto.png') }}");
         background-size: 100% 100%;
         background-position: center;
         background-repeat: no-repeat;

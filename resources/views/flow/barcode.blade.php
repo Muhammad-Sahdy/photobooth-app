@@ -60,7 +60,7 @@
     .bg-image {
         position: absolute;
         inset: 0;
-        background: url("{{ asset('storage/images/barcode page.png') }}") center center / 100% 100% no-repeat;
+        background: url("{{ asset('public_storage/images/barcode page.png') }}") center center / 100% 100% no-repeat;
         z-index: 0;
     }
 

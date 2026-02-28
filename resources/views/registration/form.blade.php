@@ -251,13 +251,13 @@
 
     {{-- ===== START SCREEN ===== --}}
     <div id="startScreen">
-        <img class="bg" src="{{ asset('storage/images/Home.png') }}" alt="background">
+        <img class="bg" src="{{ asset('public_storage/images/Home.png') }}" alt="background">
         <button id="startButton">Start</button>
     </div>
 
     {{-- ===== REGISTRATION SCREEN ===== --}}
     <div id="registrationScreen">
-        <img class="bg" src="{{ asset('storage/images/registrasi.png') }}" alt="background">
+        <img class="bg" src="{{ asset('public_storage/images/registrasi.png') }}" alt="background">
 
         <div id="left-side">
             <div id="registrationForm">
